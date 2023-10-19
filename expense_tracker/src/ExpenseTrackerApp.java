@@ -49,13 +49,11 @@ public class ExpenseTrackerApp {
         if (e.getClickCount() >= 2) { // Check for a double-click
           int selectedRow = view.getTransactionsTable().getSelectedRow();
           if (selectedRow != -1) {
-            System.out.println(selectedRow);
             controller.deleteRow(selectedRow);
           }
         }
       }
     });
-
 
     JComboBox<String> amountFilterBox = view.getAmountFilterBox();
     ActionListener amountChangeActionListener = new ActionListener() {

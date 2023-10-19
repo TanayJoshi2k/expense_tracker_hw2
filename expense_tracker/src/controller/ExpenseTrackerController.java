@@ -29,44 +29,41 @@ public class ExpenseTrackerController {
 
     // Get transactions from model
     List<Transaction> transactions = model.getTransactions();
-    
+
     // Pass to view
     view.refreshTable(transactions);
 
   }
 
   public void applyFilter(AmountFilterContext filterContext) {
-    if (filterContext.getFilterStrategy() != null) {
+    int threshold = 500;
+    if (filterContext.getFilterStrategy() != null && InputValidation.isValidAmount(threshold)) {
       List<Transaction> transactions = model.getTransactions();
-      List<Integer> rowIndexes = filterContext.applyFilter(transactions, 500);
+      List<Integer> rowIndexes = filterContext.applyFilter(transactions, threshold);
       view.paintRows(rowIndexes);
-    }
-    else {
+    } else {
       List<Integer> emptyList = new ArrayList<>();
       view.paintRows(emptyList);
+      view.showError("Invalid Amount");
     }
   }
 
   public void applyFilter(CategoryFilter categoryFilter) {
     String category = categoryFilter.getCategory();
-    if (!InputValidation.isValidCategory(category)) {
-      System.out.println("Invalid Category");
-      List<Integer> emptyList = new ArrayList<>();
-      view.paintRows(emptyList);
-    }
-    else {
+    if (InputValidation.isValidCategory(category)) {
       List<Transaction> transactions = model.getTransactions();
       List<Integer> rowIndexes = categoryFilter.filter(transactions, category);
       view.paintRows(rowIndexes);
+    } else {
+      List<Integer> emptyList = new ArrayList<>();
+      view.paintRows(emptyList);
+      view.showError("Null or Invalid Category");
     }
-    
+
   }
 
   public boolean addTransaction(double amount, String category) {
-    if (!InputValidation.isValidAmount(amount)) {
-      return false;
-    }
-    if (!InputValidation.isValidCategory(category)) {
+    if (!InputValidation.isValidAmount(amount) || !InputValidation.isValidCategory(category)) {
       return false;
     }
 

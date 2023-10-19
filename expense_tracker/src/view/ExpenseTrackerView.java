@@ -1,16 +1,8 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import javax.swing.table.DefaultTableModel;
-
-import Interfaces.AmountInterface.AmountLessThanFilter;
-
 import javax.swing.table.DefaultTableCellRenderer;
-
-import controller.ExpenseTrackerController;
-import controller.InputValidation;
-
 
 import java.awt.*;
 import java.text.NumberFormat;
@@ -34,7 +26,7 @@ public class ExpenseTrackerView extends JFrame {
 
     String[] columnNames = { "serial", "Amount", "Category", "Date" };
     String[] amountFilterOptions = { "", "Less than equal to 500", "More than 500" };
-    String[] categoryFilterOptions = { "", "travel", "food", "other" };
+    String[] categoryFilterOptions = {"" ,"food", "travel", "bills", "entertainment", "other"};
 
     amountFilter = new JComboBox<>(amountFilterOptions);
     categoryFilter = new JComboBox<>(categoryFilterOptions);
@@ -101,6 +93,10 @@ public class ExpenseTrackerView extends JFrame {
       }
     });
     transactionsTable.updateUI();
+  }
+
+  public void showError(String errorMessage) {
+    JOptionPane.showMessageDialog(null, errorMessage);
   }
 
   public void refreshTable(List<Transaction> transactions) {
