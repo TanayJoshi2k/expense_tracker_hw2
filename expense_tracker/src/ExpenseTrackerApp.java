@@ -12,10 +12,17 @@ import controller.ExpenseTrackerController;
 import model.ExpenseTrackerModel;
 import view.ExpenseTrackerView;
 
+/**
+ * Entry point of the app.
+ * Initializes model, view, controller and action listeners
+ */
 public class ExpenseTrackerApp {
-
+/**
+ * This class bundles MVC together
+ * @param args - Command line arguments - array of strings 
+ */
   public static void main(String[] args) {
-
+    
     // Create MVC components
     ExpenseTrackerModel model = new ExpenseTrackerModel();
     ExpenseTrackerView view = new ExpenseTrackerView();
@@ -38,7 +45,6 @@ public class ExpenseTrackerApp {
         view.toFront();
       }
     });
-
 
     view.getTransactionsTable().addMouseListener(new MouseAdapter() {
       @Override

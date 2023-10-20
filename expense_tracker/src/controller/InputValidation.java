@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 public class InputValidation {
 
+  /**
+   * This method validates the transaction amount. 
+   * Returns true only if amount is greater than 0 and less than 1000 
+   * @param amount - the amount field of a transaction
+   * @return boolean value - whether amount is valid or not
+   */
   public static boolean isValidAmount(double amount) {
     
     // Check range
@@ -19,6 +25,12 @@ public class InputValidation {
     return true;
   }
 
+  /**
+   * This method validates the transaction category.
+   * Returns true if the category is in one of the below defined categories
+   * @param category - the category field of a transaction
+   * @return boolean value - whether category is valid or not
+   */
   public static boolean isValidCategory(String category) {
 
     if(category == null) {

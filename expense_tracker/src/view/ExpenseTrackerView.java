@@ -17,9 +17,16 @@ public class ExpenseTrackerView extends JFrame {
   private JFormattedTextField amountField;
   private JTextField categoryField;
   private DefaultTableModel model;
+
+  /** Amount Filter dropdown */
   private JComboBox<String> amountFilter;
+
+  /** Category Filter dropdown */
   private JComboBox<String> categoryFilter;
 
+  /**
+   * Initializes the UI elements - JTable, button, amount and category filters, labels
+   */
   public ExpenseTrackerView() {
     setTitle("Expense Tracker"); // Set title
     setSize(600, 400); // Make GUI larger
@@ -78,6 +85,10 @@ public class ExpenseTrackerView extends JFrame {
     
   }
 
+  /**
+   * @param rowIndexes - indexes of transactions table to be painted after filtering
+   * This method paints the table rows if they match the filter condition
+   */
   public void paintRows(List<Integer> rowIndexes) {
     transactionsTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
       @Override
@@ -95,10 +106,19 @@ public class ExpenseTrackerView extends JFrame {
     transactionsTable.updateUI();
   }
 
+  /**
+   * This method pops up dialog box on either amount or category validation check fail
+   * @param errorMessage - the error string to be displayed
+   */
   public void showError(String errorMessage) {
     JOptionPane.showMessageDialog(null, errorMessage);
   }
 
+  /**
+   * @param transactions - list of transactions
+   * This method refreshes the transactions Jtable to reflect the latest changes in the data model
+   * It updates the row count, total amount.
+   */
   public void refreshTable(List<Transaction> transactions) {
     // Clear existing rows
     model.setRowCount(0);
@@ -122,31 +142,51 @@ public class ExpenseTrackerView extends JFrame {
 
   }
 
+  /**
+   * This method removes the selected row from the transactions table
+   */
   public void removeTableRow(int selectedRow) {
     model.removeRow(selectedRow);
   }
 
+  /**
+   * @return add transaction button 
+   */
   public JButton getAddTransactionBtn() {
     return addTransactionBtn;
   }
 
+  /**
+   * @return amount filter dropdown
+   */
   public JComboBox<String> getAmountFilterBox() {
     return amountFilter;
   }
 
+  /**
+   * @return category filter dropdown
+   */
   public JComboBox<String> getCategoryFilterBox() {
     return categoryFilter;
   }
 
+  /**
+   * @return table model
+   */
   public DefaultTableModel getTableModel() {
     return model;
   }
 
-  // Other view methods
+  /**
+   * @return transactions table
+   */
   public JTable getTransactionsTable() {
     return transactionsTable;
   }
 
+  /**
+   * @return the amount value from a table row
+   */
   public double getAmountField() {
     if (amountField.getText().isEmpty()) {
       return 0;
@@ -156,14 +196,25 @@ public class ExpenseTrackerView extends JFrame {
     }
   }
 
+  /**
+   * This method sets the amount text field in the table for a transaction
+   * @param amountField 
+   */
   public void setAmountField(JFormattedTextField amountField) {
     this.amountField = amountField;
   }
 
+  /**
+   * @return the category field from a table row
+   */
   public String getCategoryField() {
     return categoryField.getText();
   }
 
+  /**
+   * @param categoryField Sets the category text field of a transaction table row
+   * This method sets the category field in the table for a transaction
+   */
   public void setCategoryField(JTextField categoryField) {
     this.categoryField = categoryField;
   }
