@@ -6,11 +6,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-import Interfaces.AmountInterface.AmountLessThanFilter;
-import Interfaces.AmountInterface.AmountFilterContext;
-import Interfaces.AmountInterface.AmountFilterStrategy;
-import Interfaces.AmountInterface.AmountMoreThanFilter;
-import Interfaces.CategoryInterface.CategoryFilter;
+import controller.Interfaces.AmountInterface.*;
+import controller.Interfaces.CategoryInterface.*;
 import controller.ExpenseTrackerController;
 import model.ExpenseTrackerModel;
 import view.ExpenseTrackerView;

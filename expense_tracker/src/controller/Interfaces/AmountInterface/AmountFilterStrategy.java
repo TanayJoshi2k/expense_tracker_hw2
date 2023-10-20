@@ -1,4 +1,4 @@
-package Interfaces.AmountInterface;
+package controller.Interfaces.AmountInterface;
 
 import java.util.ArrayList;
 import java.util.List;

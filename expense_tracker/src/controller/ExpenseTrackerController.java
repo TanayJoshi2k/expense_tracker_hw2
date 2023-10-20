@@ -4,12 +4,9 @@ import view.ExpenseTrackerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
-import javax.xml.crypto.dsig.spec.XPathType.Filter;
-
-import Interfaces.AmountInterface.AmountFilterContext;
-import Interfaces.CategoryInterface.CategoryFilter;
+import controller.Interfaces.AmountInterface.AmountFilterContext;
+import controller.Interfaces.CategoryInterface.CategoryFilter;
 import model.ExpenseTrackerModel;
 import model.Transaction;
 
